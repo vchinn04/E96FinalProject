@@ -15,10 +15,10 @@ public class PlayerHealth : MonoBehaviour
        }
    }
    public void TakeDamage(int d) {
-        if (life >= 1) {
+        if (health >= 1) {
             health -= d;
-            Destroy(hearts[life].gameObject);
-            if (life < 1) {
+            Destroy(hearts[health].gameObject);
+            if (health < 1) {
                 dead = true;
             }
         }
