@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+
    private int health;
+   private int maxHealth = 3;
    private bool dead;
    public GameObject[] hearts;
 
@@ -13,6 +15,13 @@ public class PlayerHealth : MonoBehaviour
        if (dead == true) {
             //Code
        }
+   }
+   public void Heal(int hp) {
+
+        health += hp;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
    }
    public void TakeDamage(int d) {
         if (health >= 1) {
