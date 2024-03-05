@@ -16,9 +16,22 @@ public class PlayerInventory : MonoBehaviour
     //int[] item_count = new int[5];
     // Start is called before the first frame update
 
-    public (string, int)[] GetItems()
+    public (string, int)[] GetAllItems()
     {
         return item_list;
+    }
+
+    public (string, int) GetItem(string item)
+    {
+        for (int i = 0; i < item_list.Length; i++)
+        {
+            string item_name = item_list[i].Item1;
+            if (String.Compare(item_name, item) == 0)
+            {
+                return item_list[i];
+            }
+        }
+        return ("", 0);
     }
 
     public void AddItem(string item)
@@ -38,14 +51,14 @@ public class PlayerInventory : MonoBehaviour
         return;
     }
 
-    public void RemoveItem(string item)
+    public void RemoveItem(string item, int amount=1)
     {
         for (int i = 0; i < item_list.Length; i++)
         {
             string item_name = item_list[i].Item1;
             if (String.Compare(item_name, item) == 0)
             {
-                item_list[i].Item2 -= 1;
+                item_list[i].Item2 -= amount;
                 if (item_list[i].Item2 < 0)
                     item_list[i].Item2 = 0;
 

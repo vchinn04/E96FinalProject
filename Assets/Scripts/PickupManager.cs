@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,20 @@ public class PickupManager : MonoBehaviour
     MajorManager major_manager;
     PlayerInventory inventory;
 
-    public void Pickup(string item, GameObject obj)
+    public void Pickup(string item)
     {
         inventory.AddItem(item);
         Debug.Log(tag);
+    }
+
+    public (string, int) GetItem(string item)
+    {
+        return inventory.GetItem(item);
+    }
+
+    public void RemoveItem(string item, int amount = 1)
+    {
+        inventory.RemoveItem(item, amount);
     }
 
     public void PickupMajor(string major)
