@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ObjectDrop : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] string ObjectId;
+    bool picked_up = false;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        PickupManager pickup_manager = collision.gameObject.GetComponent<PickupManager>();
+
+        if (pickup_manager != null)
+        {
+            picked_up = true;
+            pickup_manager.Pickup(ObjectId);
+            Destroy(transform.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
