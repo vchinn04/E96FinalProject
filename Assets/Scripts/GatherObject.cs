@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class GatherObject : MonoBehaviour
 {
-    (string, int)[] required_items =
+   (string, int)[] required_items =
    {
         ("Nut", 1),
         ("Spring", 1),
         ("Bolt", 1),
         ("Tire", 1),
     };
+    LevelManager level_manager = null;
 
     bool picked_up = false;
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,6 +40,13 @@ public class GatherObject : MonoBehaviour
                 (string, int) req_item = required_items[i];
                 pickup_manager.RemoveItem(req_item.Item1, req_item.Item2);
             }
+            level_manager.Unlock();
         }
     }
+
+    void Start()
+    {
+        level_manager = GameObject.Find("Exit").GetComponent<LevelManager>();
+    }
+
 }

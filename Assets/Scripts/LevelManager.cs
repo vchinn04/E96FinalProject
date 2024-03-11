@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    bool locked = true;
+    [SerializeField] bool locked = true;
+    SpriteRenderer sprite;
 
     public void Unlock()
     {
         Debug.Log("Unlocked!");
         locked = false;
+        sprite.color = new Color(0, 0, 1, 1);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,5 +27,10 @@ public class LevelManager : MonoBehaviour
             int cur_scene_num = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(cur_scene_num + 1);
         }
+    }
+
+    void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
     }
 }

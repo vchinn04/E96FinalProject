@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool is_moving = false;
     private float scan_distance_addition = 1.0f;
-
+    private int face_direction;
     private Vector2 move_direction = new Vector2(0, 0);
 
     private UnityEngine.Vector2 target = UnityEngine.Vector2.zero;
@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private GameObject PlayerTarget;
     private PlayerCollision CollisionHandler;
+    Animator anim;
 
     public void OnMove(InputValue value)
     {
@@ -42,10 +43,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (x_axis != 0 && !is_moving) // X Axis
         {
+            face_direction = 2 - (int)x_axis;
+            anim.SetInteger("FaceDirection", face_direction);
+
             is_moving = true;
+            anim.SetBool("IsWalking", true);
+
+
 
             if (!CollisionHandler.CheckCollision(new UnityEngine.Vector2(x_axis, 0), 0.45f + scan_distance_addition, PlayerTarget))
             {
+
                 target = new UnityEngine.Vector2(cur_pos.x + x_axis, cur_pos.y);
                 cur_pos = target;
                 PlayerTarget.transform.position = new UnityEngine.Vector2(cur_pos.x + x_axis, cur_pos.y); 
@@ -54,7 +62,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (y_axis != 0 && !is_moving) // Y Axis
         {
+            face_direction = 1 + (int)y_axis;
+            anim.SetInteger("FaceDirection", face_direction);
+
             is_moving = true;
+            anim.SetBool("IsWalking", true);
+
 
             if (!CollisionHandler.CheckCollision(new UnityEngine.Vector2(0, y_axis), 0.45f + scan_distance_addition, PlayerTarget))
             {
@@ -72,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if ((transform.position.x == target.x) && (transform.position.y == target.y))
         {
             is_moving = false;
+            anim.SetBool("IsWalking", false);
         }
     }
 
@@ -85,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
         PlayerTarget.transform.parent = null;
         PlayerTarget.transform.position = cur_pos;
         CollisionHandler = PlayerTarget.GetComponent<PlayerCollision>();
+
+        anim = GameObject.Find("Character").GetComponent<Animator>();
     }
 
     // Update is called once per frame
