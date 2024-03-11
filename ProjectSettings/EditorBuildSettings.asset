@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Options.unity
     guid: fb3115afed8d7471a96deb088e072ade
+  - enabled: 1
+    path: Assets/Scenes/Workshop.unity
+    guid: 9b63e1a12f88b485d93a831a159b1b4f
+  - enabled: 1
+    path: Assets/Scenes/Library.unity
+    guid: d0b257d48fbaf434581019147c1fbcb7
+  - enabled: 1
+    path: Assets/Scenes/Class Room.unity
+    guid: 31069ab251a484e3294767c3db1adf92
   m_configObjects: {}
