@@ -46,3 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground2
+    uniqueID: 2634390135
+    locked: 0
+  - name: Level
+    uniqueID: 2289047177
+    locked: 0
+  - name: Items
+    uniqueID: 784430627
+    locked: 0
+  - name: Items top
+    uniqueID: 270739795
+    locked: 0
