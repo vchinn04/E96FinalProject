@@ -31,7 +31,7 @@ public class PickupManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        major_manager = GameObject.Find("Player").GetComponent<MajorManager>();
+        major_manager = GameObject.Find("MajorManager").GetComponent<MajorManager>();
         inventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
     }
 
