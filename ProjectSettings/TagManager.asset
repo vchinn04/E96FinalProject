@@ -9,6 +9,7 @@ TagManager:
   - ECE
   - MechE
   - ChemE
+  - Enemy
   layers:
   - Default
   - TransparentFX
