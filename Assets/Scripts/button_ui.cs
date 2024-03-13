@@ -7,7 +7,10 @@ using UnityEngine.UI;
 
 public class button_ui : MonoBehaviour
 {
+    MajorManager major_manager;
+
     public void changeScene(int indexScene) {
+        major_manager.ClearMajors();
         SceneManager.LoadScene(indexScene);
     }
 
@@ -15,4 +18,12 @@ public class button_ui : MonoBehaviour
     {
         Application.Quit();
     }
+
+    void Start()
+    {
+        major_manager = GameObject.Find("MajorManager").GetComponent<MajorManager>();
+
+    }
+
+
 }
