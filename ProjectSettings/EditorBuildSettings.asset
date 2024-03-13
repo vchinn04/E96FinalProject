@@ -9,21 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainPage.unity
     guid: aaff620e58e154ed5917b9ca1dee498c
   - enabled: 1
-    path: Assets/Scenes/Library.unity
-    guid: d0b257d48fbaf434581019147c1fbcb7
-  - enabled: 1
-    path: Assets/Scenes/Workshop.unity
-    guid: 9b63e1a12f88b485d93a831a159b1b4f
-  - enabled: 1
-    path: Assets/Scenes/Class Room.unity
-    guid: 31069ab251a484e3294767c3db1adf92
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/GameOverScreen.unity
-    guid: feae2f4ccf064485fa6c5faa23c81a2d
-  - enabled: 1
     path: Assets/Scenes/Options.unity
     guid: fb3115afed8d7471a96deb088e072ade
   - enabled: 1
@@ -38,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: c7320c87025b54f03b572398b2581893
+  - enabled: 1
+    path: Assets/Scenes/GameOverScreen.unity
+    guid: feae2f4ccf064485fa6c5faa23c81a2d
   m_configObjects: {}

@@ -10,4 +10,9 @@ public class button_ui : MonoBehaviour
     public void changeScene(int indexScene) {
         SceneManager.LoadScene(indexScene);
     }
+
+    public void appQuit()
+    {
+        Application.Quit();
+    }
 }

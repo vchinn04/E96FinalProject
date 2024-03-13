@@ -132,7 +132,7 @@ public class PlayerHealth : MonoBehaviour
             if (health < 1)
             {
                 dead = true;
-                SceneManager.LoadScene(5);
+                SceneManager.LoadScene(6);
             }
         }
     }
