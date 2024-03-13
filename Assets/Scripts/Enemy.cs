@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    
     [SerializeField] Transform target;
     NavMeshAgent agent;
-    void Start()
+    private void Start()
     {
-        agent = GetComponet<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        agent.SetDestination(target.postion);
+        agent.SetDestination(target.position);
     }
 }
