@@ -9,10 +9,10 @@ public class VolumeControl : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Slider slider;
     [SerializeField] private AudioMixer mixer;
-
     void Start()
     {
         slider.value = 50f;
+        Debug.Log(slider.value);
     }
 
     // Update is called once per frame

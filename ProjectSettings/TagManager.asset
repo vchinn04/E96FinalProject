@@ -9,6 +9,7 @@ TagManager:
   - ECE
   - MechE
   - ChemE
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX
