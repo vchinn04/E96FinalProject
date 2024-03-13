@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 
 public class MajorManager : MonoBehaviour
 {
+    public static MajorManager Instance;
+
     string[] Majors = new string[5];
 
     int MinMajor = 0;
@@ -18,35 +20,37 @@ public class MajorManager : MonoBehaviour
     public void OnMajorSwitch(InputValue value)
     {
         int move_dir = (int) value.Get<float>();
-        CurrentMajor += move_dir;
-        if (CurrentMajor > MaxMajor)
-            CurrentMajor = MinMajor;
-        if (CurrentMajor < MinMajor)
-            CurrentMajor = MaxMajor;
+        MajorManager.Instance.CurrentMajor += move_dir;
+        if (MajorManager.Instance.CurrentMajor > MajorManager.Instance.MaxMajor)
+            MajorManager.Instance.CurrentMajor = MajorManager.Instance.MinMajor;
+        if (MajorManager.Instance.CurrentMajor < MajorManager.Instance.MinMajor)
+            MajorManager.Instance.CurrentMajor = MajorManager.Instance.MaxMajor;
         UpdateCollisions();
-        Debug.Log(CurrentMajor);
+        Debug.Log(MajorManager.Instance.CurrentMajor);
+        Debug.Log(MajorManager.Instance.Majors[MajorManager.Instance.CurrentMajor]);
+
     }
 
     public void AddMajor(string major)
     {
-        MaxMajor += 1;
-        Majors[MaxMajor] = major;
+        MajorManager.Instance.MaxMajor += 1;
+        MajorManager.Instance.Majors[MajorManager.Instance.MaxMajor] = major;
     }
 
     public void ClearMajors()
     {
-        MaxMajor = 0;
+        MajorManager.Instance.MaxMajor = 0;
     }
 
     private void UpdateCollisions()
     {
         for (int i = 0; i < MaxMajor+1; i++)
         {
-            string tag = Majors[i];
+            string tag = MajorManager.Instance.Majors[i];
             GameObject[] major_objects = GameObject.FindGameObjectsWithTag(tag);
             foreach (GameObject obj in major_objects)
             {
-                if (CurrentMajor == i)
+                if (MajorManager.Instance.CurrentMajor == i)
                     obj.layer = LayerMask.NameToLayer("Ignore Raycast");
                 else
                     obj.layer = LayerMask.NameToLayer("Default");
@@ -57,9 +61,22 @@ public class MajorManager : MonoBehaviour
         return;
     }
     // Start is called before the first frame update
-    void Start()
+    //void Start()
+    //{
+    //    Majors[0] = "Undeclared";
+    //    UpdateCollisions();
+    //}
+    private void Awake()
     {
-        Majors[0] = "Undeclared";
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        MajorManager.Instance.Majors[0] = "Undeclared";
         UpdateCollisions();
     }
 
