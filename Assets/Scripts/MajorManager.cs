@@ -16,6 +16,7 @@ public class MajorManager : MonoBehaviour
     int MaxMajor = 0;
 
     int CurrentMajor = 0;
+    bool init = false;
 
     public void OnMajorSwitch(InputValue value)
     {
@@ -51,7 +52,10 @@ public class MajorManager : MonoBehaviour
             foreach (GameObject obj in major_objects)
             {
                 if (MajorManager.Instance.CurrentMajor == i)
+                {
                     obj.layer = LayerMask.NameToLayer("Ignore Raycast");
+                    MajorManager.Instance.init = true;
+                }
                 else
                     obj.layer = LayerMask.NameToLayer("Default");
 
@@ -61,11 +65,12 @@ public class MajorManager : MonoBehaviour
         return;
     }
     // Start is called before the first frame update
-    //void Start()
-    //{
-    //    Majors[0] = "Undeclared";
-    //    UpdateCollisions();
-    //}
+    void Start()
+    {
+        MajorManager.Instance.Majors[0] = "Undeclared";
+        MajorManager.Instance.CurrentMajor = MajorManager.Instance.MinMajor;
+        UpdateCollisions();
+    }
     private void Awake()
     {
         if (Instance != null)
@@ -77,12 +82,16 @@ public class MajorManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         MajorManager.Instance.Majors[0] = "Undeclared";
+        MajorManager.Instance.CurrentMajor = MajorManager.Instance.MinMajor;
         UpdateCollisions();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!MajorManager.Instance.init)
+        {
+            UpdateCollisions();
+        }
     }
 }
